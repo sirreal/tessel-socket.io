@@ -8,14 +8,24 @@ const io = require('socket.io')(http)
 
 console.log(tessel.led)
 
-const connectionLed = tessel.led[2]
 
 const connectionVis = () => {
   let connectionLedTimeout
+  const connectionLed = tessel.led[2]
 
   return () => {
     connectionLed.on()
     connectionLedTimeout = setTimeout(() => connectionLed.off(), 200)
+  }
+}()
+
+const wsVis = () => {
+  let wsLedTimeout
+  const wsLed = tessel.led[3]
+
+  return () => {
+    wsLed.on()
+    wsLedTimeout = setTimeout(() => wsLed.off(), 200)
   }
 }()
 
@@ -29,11 +39,7 @@ app.get('/', function(req, res){
 })
 
 io.on('connection', function(socket){
-  console.log('a user connected')
-
-  socket.on('disconnect', function(){
-    console.log('user disconnected')
-  })
+  socket.on('blink', wsVis)
 
 })
 

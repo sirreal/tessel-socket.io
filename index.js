@@ -1,7 +1,8 @@
 'use strict'
 const tessel = require('tessel')
 
-const app = require('express')()
+const express = require('express')
+const app = express()
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
 
@@ -18,8 +19,9 @@ const connectionVis = () => {
   }
 }()
 
-app.use(express.static('public'))
-
+app.get('/client.js', function(req, res){
+  res.sendFile(__dirname + '/client.js')
+})
 
 app.get('/', function(req, res){
   connectionVis()

@@ -4,7 +4,10 @@
   "description": "Tessel project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "t2 run index.js",
+    "push": "t2 push index.js",
+    "prerun": "npm run prepush",
+    "prepush": "webpack --config webpack.config.js"
   },
   "repository": "www.github.com/tessel/t2-cli",
   "keywords": [
@@ -13,7 +16,12 @@
   "license": "MIT",
   "readme": "A bare bones Tessel 2 blinky script.",
   "dependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
     "express": "^4.13.4",
-    "socket.io": "^1.4.6"
+    "socket.io": "^1.4.6",
+    "webpack": "^1.13.0"
   }
 }

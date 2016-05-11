@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Switch from './Switch'
 
 export default class App extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ export default class App extends Component {
   render() {
     return <div>
       <h1>LED is { this.state.wsLed ? 'ON' : 'off' }.</h1>
+      <Switch active={ this.state.wsLed} onClick={this.toggleLed.bind(this)} />
       <button className='btn btn-primary' onClick={this.toggleLed.bind(this)} type='button'>Toggle light</button>
     </div>
   }

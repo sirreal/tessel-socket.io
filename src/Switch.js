@@ -3,8 +3,15 @@
  * http://codepen.io/keithpickering/pen/EaZGQE
  */
 import CSS from './Switch.css'
+import React, { PropTypes } from 'react'
 
-export default function(props) {
+function Switch(props) {
   const status = props.active ? 'on' : 'off'
-  return <a href='#' className={ `${CSS.toggle} ${CSS[status]}` }></a>
+  return <button className={ `${CSS.Switch} ${CSS[status]}` } {...props}></button>
 }
+
+Switch.propTypes = {
+  onClick: PropTypes.func.isRequired,
+}
+
+export { Switch, Switch as default }

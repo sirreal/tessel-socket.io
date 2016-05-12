@@ -4,10 +4,10 @@
   "description": "A tessel 2 demo project using socket.io and react to share control of a Tessel2 via browser.",
   "main": "index.js",
   "scripts": {
-    "run": "t2 run index.js",
-    "push": "t2 push index.js",
-    "prerun": "npm run prepush",
-    "prepush": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "run": "t2 run index.js", "prerun": "npm run build",
+    "push": "t2 push index.js", "prepush": "npm run build",
+    "mock": "node mock.js", "premock": "npm run build"
   },
   "repository": "www.github.com/tessel/t2-cli",
   "keywords": [

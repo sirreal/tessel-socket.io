@@ -1,4 +1,4 @@
-.toggle {
+.Switch {
   position: relative;
   display: block;
   margin: 0 auto;
@@ -13,15 +13,22 @@
   transition: all 500ms;
 }
 
-.toggle:active {
+.Switch:active {
   background-color: #333;
+  outline: none;
 }
 
-.toggle:hover:not(.toggle--moving)::after {
+.Switch:focus {
+  outline: none;
+  box-shadow: 0 0 10px 5px cornflowerblue;
+}
+
+.Switch:hover:not(.toggle--moving)::after,
+.Switch:focus:not(.toggle--moving)::after {
   background-color: #455A64;
 }
 
-.toggle::after {
+.Switch::after {
   display: block;
   position: absolute;
   top: 4px;
@@ -35,7 +42,7 @@
   color: white;
   background-color: #37474F;
   border: 2px solid;
-  transition: all 500ms; 
+  transition: all 500ms;
 }
 
 .on::after {

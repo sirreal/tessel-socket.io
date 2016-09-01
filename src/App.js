@@ -20,10 +20,19 @@ export default class App extends Component {
     this.socket.emit('toggleLed')
   }
 
+  resetAlert() {
+    this.socket.emit('resetAlert')
+  }
+
   render() {
     return <div>
       <h1>LED is { this.state.wsLed ? 'ON' : 'off' }.</h1>
       <Switch active={ this.state.wsLed} onClick={ this.toggleLed.bind(this) } />
+      <button
+        onClick={ this.resetAlert.bind(this) }
+        disabled={ !this.state.alertSounded }>
+          Reset sound alert
+      </button>
     </div>
   }
 }

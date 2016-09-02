@@ -56,6 +56,11 @@ const resetAlert = () => {
     servoMove(0)
   }
 }
+const rangeChange = (v) => {
+  sharedState.range = v
+  servoMove(v)
+  stateChange()
+}
 
 app.get('/client.js', function(req, res){
   res.sendFile(__dirname + '/dist/client.js')
@@ -74,6 +79,7 @@ io.on('connection', function(socket){
   socket.emit('stateChange', sharedState)
   socket.on('toggleLed', toggleLed)
   socket.on('resetAlert', resetAlert)
+  socket.on('rangeChange', rangeChange)
 })
 
 http.listen(80, function() {
